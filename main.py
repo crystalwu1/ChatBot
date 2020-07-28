@@ -1,35 +1,51 @@
-import random
+import guessnumber
 
-def guessNumber():
-  upper_bound = int(input("Enter an upper bound "))
-  count = 0
-  answer = random.randint(1, upper_bound)
-  # answer = random.randint(1, 100)
-  print("Great! We have picked a number from 1 to", upper_bound, ". Now start guessing!")
-  # guess = get_guess()
-  guess = int(input("Guess a number "))
-  count += 1
+def greet(words, name):
+  for each in words[1:]:
+    if each == "me":
+      if name != None:
+        print("Hello,", name, "!")
+      else:
+        name = input("I don't know your name. What is is? ")
+        greet(words, name)
+        return name
+        
+    elif each != "and":
+      print("Hello,", each, "!")
+  return name
+  
+  
+def convert(unitFrom, unitTo, num):
+  if unitFrom == "ft" and unitTo == "in":
+    print(num, unitFrom, "equals", float(num) * 12, unitTo)
 
-  while guess != answer:
-    count += 1
-    if guess > answer:
-      print("Your guess is too big")
-    else:
-      print("Your guess is too small")
-    # guess = get_guess()
-    guess = int(input("Guess a number "))
-  print("Yep! The number was", answer, ".")
-  print("You got it in " + str(count) + " tries!")
+  elif unitFrom == "in" and unitTo == "ft":
+    print(num, unitFrom, "equals", float(num) / 12, unitTo)
 
-quit = "y"
-print("hello")
-while quit == "y":
-  user = input("What would you like to do today? ")
-  words = user.split(" ")
+  else:
+    print("I don't recognize those units, sorry")
+
+print("Hello!")
+quit = input("What would you like to do today? ")
+name = None
+
+while quit != "quit" or quit != "no":
+  
+  words = quit.split(" ")
+
   if words[0].lower() == "greet":
-    for each in words[1:]:
-      if each != "and":
-        print("Hello,", each, "!")
-  if words[0].lower() == "guess":
-    guessNumber()
-  quit = input("Anything else? y or n: ")
+    name = greet(words, name)
+
+  elif words[0].lower() == "guess":
+    guessnumber.guessNumber()
+
+  elif words[0].lower() == "convert":
+    convert(words[2], words[4], words[1])
+
+  else:
+    print("I don't recognize that command.")
+  
+  print("")
+  quit = input("Anything else? ")
+
+print("Goodbye!")
