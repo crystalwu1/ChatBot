@@ -10,7 +10,7 @@ name = None
 
 while user != "user" or user != "no":
 
-  try:
+  # try:
 
     words = user.split(" ")
 
@@ -21,7 +21,7 @@ while user != "user" or user != "no":
       guessnumber.guessNumber()
 
     elif words[0].lower() == "convert":
-      unitconversion.convert(words[2], words[4], words[1])
+      unitconversion.convertMetric(words[2], words[4], words[1])
 
     elif words[0].lower() + words[1].lower() == "magicnumber":
       num = input("Choose an integer from 1 to 10: ")
@@ -33,8 +33,8 @@ while user != "user" or user != "no":
     print("")
     user = input("Anything else? ")
 
-  except:
-    print("")
-    user = input("Invalid input. Try again: ")
+  # except:
+  #   print("")
+  #   user = input("Invalid input. Try again: ")
 
 print("Goodbye!")
