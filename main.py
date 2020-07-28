@@ -1,51 +1,40 @@
 import guessnumber
+import greet
+import unitconversion
+import magic4
 
-def greet(words, name):
-  for each in words[1:]:
-    if each == "me":
-      if name != None:
-        print("Hello,", name, "!")
-      else:
-        name = input("I don't know your name. What is is? ")
-        greet(words, name)
-        return name
-        
-    elif each != "and":
-      print("Hello,", each, "!")
-  return name
-  
-  
-def convert(unitFrom, unitTo, num):
-  if unitFrom == "ft" and unitTo == "in":
-    print(num, unitFrom, "equals", float(num) * 12, unitTo)
-
-  elif unitFrom == "in" and unitTo == "ft":
-    print(num, unitFrom, "equals", float(num) / 12, unitTo)
-
-  else:
-    print("I don't recognize those units, sorry")
 
 print("Hello!")
-quit = input("What would you like to do today? ")
+user = input("What would you like to do today? ")
 name = None
 
-while quit != "quit" or quit != "no":
-  
-  words = quit.split(" ")
+while user != "user" or user != "no":
 
-  if words[0].lower() == "greet":
-    name = greet(words, name)
+  try:
 
-  elif words[0].lower() == "guess":
-    guessnumber.guessNumber()
+    words = user.split(" ")
 
-  elif words[0].lower() == "convert":
-    convert(words[2], words[4], words[1])
+    if words[0].lower() == "greet":
+      name = greet.greet(words, name)
 
-  else:
-    print("I don't recognize that command.")
-  
-  print("")
-  quit = input("Anything else? ")
+    elif words[0].lower() == "guess":
+      guessnumber.guessNumber()
+
+    elif words[0].lower() == "convert":
+      unitconversion.convert(words[2], words[4], words[1])
+
+    elif words[0].lower() + words[1].lower() == "magicnumber":
+      num = input("Choose an integer from 1 to 10: ")
+      magic4.magicNumber(int(num))
+
+    else:
+      print("I don't recognize that command.")
+    
+    print("")
+    user = input("Anything else? ")
+
+  except:
+    print("")
+    user = input("Invalid input. Try again: ")
 
 print("Goodbye!")
