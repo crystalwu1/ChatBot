@@ -14,8 +14,6 @@ def numberToString(num):
   else:
     return ones[num]
 
-  
-
 def magicNumber(number):
   # print(numberToString(number))
   print(number, "is", len(numberToString(number)))

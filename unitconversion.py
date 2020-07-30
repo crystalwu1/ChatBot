@@ -20,5 +20,11 @@ def convert(unitFrom, unitTo, num):
   elif unitFrom == "in" and unitTo == "ft":
     print(num, unitFrom, "equals", float(num) / 12, unitTo)
 
+  elif unitFrom == "C" and unitTo == "F":
+    print(num, unitFrom, "equals", float(num*9/5+32) / 12, unitTo)
+
+  elif unitFrom == "F" and unitTo == "C":
+    print(num, unitFrom, "equals", float((num - 32)*5/9) / 12, unitTo)
+
   else:
     print("I don't recognize those units, sorry")
